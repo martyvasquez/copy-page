@@ -1,0 +1,41 @@
+name: CopySheet
+options:
+  bundleIdPrefix: com.vasquez
+  deploymentTarget:
+    macOS: "14.0"
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    MARKETING_VERSION: "1.0"
+    CURRENT_PROJECT_VERSION: "1"
+targets:
+  CopySheet:
+    type: application
+    platform: macOS
+    sources:
+      - CopySheet
+    settings:
+      base:
+        PRODUCT_NAME: Copy Sheets
+        PRODUCT_MODULE_NAME: CopySheet
+        PRODUCT_BUNDLE_IDENTIFIER: com.vasquez.CopySheet
+        CODE_SIGN_STYLE: Manual
+        CODE_SIGN_IDENTITY: "-"
+        ENABLE_HARDENED_RUNTIME: NO
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+    info:
+      path: CopySheet/Info.plist
+      properties:
+        CFBundleDisplayName: Copy Sheets
+        LSApplicationCategoryType: public.app-category.education
+        CFBundleDocumentTypes:
+          - CFBundleTypeName: Copy Sheet
+            CFBundleTypeRole: Editor
+            LSHandlerRank: Owner
+            LSItemContentTypes: [com.vasquez.copysheet]
+        UTExportedTypeDeclarations:
+          - UTTypeIdentifier: com.vasquez.copysheet
+            UTTypeDescription: Copy Sheet
+            UTTypeConformsTo: [public.data, public.content]
+            UTTypeTagSpecification:
+              public.filename-extension: [copysheet]
