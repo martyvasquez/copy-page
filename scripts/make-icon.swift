@@ -1,4 +1,4 @@
-// Renders the app icon. Usage: swift scripts/make-icon.swift <font.ttf> <out.png>
+// Renders the 1024px app icon. Usage: swift scripts/make-icon.swift <font.ttf> <out.png>
 import AppKit
 import CoreText
 

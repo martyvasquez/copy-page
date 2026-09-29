@@ -12,7 +12,7 @@ Type a title, some instructions, and the text you want your child to practice. P
 
 ## Features
 
-- **Title, description, and name/date line** at the top of the page. Leave the name blank for your child to write it, or type it in to print it.
+- **Title, description, and name/date line** at the top of the page. Leave the name blank for your child to write it, or type it in to print it. The date line can be turned off.
 - **Trace mode** — dotted, ball-and-stick print letters (single-story *a* and *g*). Choose how many times each line repeats.
 - **Copy mode** — a solid model line with 1–6 blank handwriting lines under it.
 - **Line sizes from 1½" to ⅜"** — jumbo lines for preschoolers down to small lines for older kids.
@@ -35,7 +35,7 @@ That's it — from then on it opens normally. To keep it handy, right-click its 
 
 ## Using it
 
-1. Fill in the **Title** and (optionally) a **Description** with instructions.
+1. Fill in the **Title** and (optionally) a **Description** with instructions, a **Name**, and whether to include the **Date line**.
 2. Pick **Trace** or **Copy** and a **Line size**.
 3. Type the practice text. Each line you type starts a new row; long lines wrap on their own.
 4. Watch the preview on the right, then click **Print** or **Export PDF** in the toolbar.
@@ -53,6 +53,26 @@ open CopySheet.xcodeproj
 ```
 
 Then press **⌘R** to run. The Xcode project is generated from `project.yml` with [XcodeGen](https://github.com/yonaskolb/XcodeGen) — if you add or remove files, run `xcodegen generate`.
+
+To build a release copy from the command line:
+
+```sh
+xcodebuild -project CopySheet.xcodeproj -scheme CopySheet -configuration Release -derivedDataPath build/DerivedData build
+# App: build/DerivedData/Build/Products/Release/Copy Sheets.app
+```
+
+### Project layout
+
+| Path | What it is |
+|---|---|
+| `CopySheet/CopySheet.swift` | The sheet model (everything saved in a `.copysheet` file) and line-size presets |
+| `CopySheet/CopySheetDocument.swift` | Document type — sheets are saved as JSON |
+| `CopySheet/SheetRenderer.swift` | Page layout and drawing; the preview, PDF, and printout all use this |
+| `CopySheet/SheetOutput.swift` | Print and Export PDF |
+| `CopySheet/ContentView.swift` | Editor form and live page preview |
+| `CopySheet/CopySheetApp.swift` | App entry point and File menu commands |
+| `CopySheet/Fonts/` | Bundled KG fonts and their terms of use |
+| `scripts/make-icon.swift` | Renders the app icon: `swift scripts/make-icon.swift CopySheet/Fonts/KGPrimaryPenmanshipAlt.ttf icon_1024.png` |
 
 ## Fonts
 
